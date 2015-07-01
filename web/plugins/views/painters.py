@@ -1055,8 +1055,9 @@ multisite_painters["svc_servicelevel"] = {
 }
 
 def paint_custom_vars(what, row, blacklist=[]):
-    items = row[what + "_custom_variables"].items()
-    items.sort()
+    items = row[what + "_custom_variables"]
+    if len(items) > 0:
+        items = items.items().sort()
     code = '<table class=customvars>'
     for varname, value in items:
         if varname not in blacklist:
